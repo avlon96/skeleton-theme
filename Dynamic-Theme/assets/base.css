@@ -1,0 +1,95 @@
+.video-hero--fullscreen {
+  position: relative;
+  min-height: 100vh;
+}
+
+.video-hero__media,
+.video-hero__video,
+.video-hero__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-hero__poster {
+  display: none;
+}
+
+@media (max-width: 749px) {
+  .video-hero__video {
+    display: none;
+  }
+  .video-hero__poster {
+    display: block;
+  }
+}
+
+.video-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--overlay-opacity));
+  z-index: 1;
+}
+
+.video-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.video-hero__content[data-position="top"] {
+  justify-content: flex-start;
+}
+.video-hero__content[data-position="center"] {
+  justify-content: center;
+}
+.video-hero__content[data-position="bottom"] {
+  justify-content: flex-end;
+}
+
+.video-hero__content--left { align-items: flex-start; text-align: left; }
+.video-hero__content--center { align-items: center; text-align: center; }
+.video-hero__content--right { align-items: flex-end; text-align: right; }
+
+/* Scroll indicator */
+.video-hero__scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.video-hero__scroll-indicator span {
+  display: block;
+  width: 22px;
+  height: 36px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  position: relative;
+}
+
+.video-hero__scroll-indicator span::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: scrollDot 1.5s infinite;
+}
+
+@keyframes scrollDot {
+  0% { opacity: 0; transform: translate(-50%, 0); }
+  40% { opacity: 1; }
+  80% { opacity: 0; transform: translate(-50%, 12px); }
+}
